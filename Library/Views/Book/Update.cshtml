@@ -1,0 +1,29 @@
+@{
+    Layout = "_Layout";
+}
+@using Library.Models;
+@model Library.Models.Book;
+<div class="card">
+    <div class="card-body">
+        <h1 class="card-title text-center">Update Book: @Model.Title</h1>
+    </div>     
+</div>
+<div class="card">
+    <div class ="card-body">
+        @using (Html.BeginForm())
+        {
+            @Html.HiddenFor(model => model.BookId)
+            @Html.LabelFor(model => model.Title)
+            @Html.TextBoxFor(model => model.Title, new {@class = "form-control"})
+            <br>
+            @Html.LabelFor(model => model.Description)
+            @Html.TextBoxFor(model => model.Description, new {@class = "form-control"})
+            <br>
+            @Html.LabelFor(model => model.Author)
+            @Html.DropDownList("AuthorId")
+            <br>
+            <input type="submit" value="Save" class="btn button btn-info";>
+        }
+    </div>
+</div>
+}

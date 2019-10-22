@@ -1,0 +1,23 @@
+@{
+    Layout = "_Layout";
+}
+@using Library.Models;
+@model Library.Models.Author;
+
+
+<div class="card">
+    <div class="card-body">
+        <h1 class="card-title text-center">Add a New Author</h1>
+    </div>     
+</div>
+<div class="card">
+    <div class ="card-body">
+        @using (Html.BeginForm())
+        {
+            @Html.LabelFor(model => model.AuthorName)
+            @Html.TextBoxFor(model => model.AuthorName, new {@class = "form-control"})
+            <br>
+            <input type="submit" value="Add Author" class="btn button btn-success";>
+        }
+    </div>
+</div>

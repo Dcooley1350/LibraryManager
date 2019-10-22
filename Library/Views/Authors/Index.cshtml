@@ -1,0 +1,30 @@
+@{
+    Layout = "_Layout";
+}
+@using Library.Models;
+@model List<Library.Models.Author>; 
+
+<div class="card">
+    <div class="card-body">
+        <h1 class="card-title text-center">Authors</h1>
+    </div>
+        <a href="/Author/Create" class = "button btn btn-success">Add Author</a>
+</div>
+<div class="card">
+    <div class="card-body">
+        <h3 class="card-title">Authors</h3>
+        @if(@Model.Count == 0)
+        {
+            <h2><i>There are no Authors in the Database at this time.</i></h2>
+        }
+        else
+        {
+        <ul>
+            @foreach(Author model in Model)
+            {
+                <h2><li>@Html.ActionLink($"{model.AuthorName}", "Details","Author", new { id = model.AuthorId})</li></h2>
+            }
+        </ul>
+        }
+    </div>
+</div>

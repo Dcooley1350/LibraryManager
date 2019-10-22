@@ -1,0 +1,33 @@
+@{
+    Layout = "_Layout";
+}
+@using Library.Models;
+@model Library.Models.Author;
+
+
+<div class="card">
+    <div class="card-body">
+        <h1 class="card-title text-center">@Model.Name</h1>
+        @Html.ActionLink("Update This Author","Update","Author", new {id = Model.AuthorId}, new { @class = "button btn btn-info"})
+        @Html.ActionLink("Delete This Author","Delete","Author", new {id = Model.AuthorId}, new { @class = "button btn btn-danger"})
+    </div>
+        
+</div>
+<div class="card">
+    <div class="card-body">
+        <h3 class="card-title">Books</h3>
+        @if(@ViewBag.Books.Count == 0)
+        {
+            <h2><i>The Database contains no books linked to this Author at this time.</i></h2>
+        }
+        else
+        {
+        <ul>
+            @foreach(Client model in @ViewBag.Books)
+            {
+                <h2><li>@Html.ActionLink($"{model.Title}, Id: {model.BookId}", "Details","Book", new { id = model.BookId}, new { @class ="index-list"})</li></h2>
+            }
+        </ul>
+        }
+    </div>
+</div>
