@@ -24,12 +24,11 @@
             @foreach(Book book in Model)
             {
                 <h2>@Html.ActionLink($"{book.Title}", "Details","Book", new { id = book.BookId})</h2>
-                <p>@book.Authors.Count</p>
+                
                     @foreach(AuthorBook author in book.Authors)
                     {  
                     <h4>By @Html.ActionLink($"{author.Author.AuthorName}", "Details","Book", new { id = author.Author.AuthorId})</h4>
-                    }
-                    
+                    }  
             }
             
         }

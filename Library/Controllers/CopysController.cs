@@ -22,13 +22,14 @@ namespace Library.Controllers
             _userManager = userManager;
             _db = db;
         }
+        [HttpPost("/Copy/Create/{id}")]
         public ActionResult Create(int id)
         {
             var foundBook = _db.Books.FirstOrDefault(books => books.BookId == id);
             Copy newCopy = new Copy(id,foundBook);
             _db.Copies.Add(newCopy);
             _db.SaveChanges();
-            return RedirectToAction("Details", "Books");
+            return RedirectToAction("Details", "Book", new { id = id});
         }
     }
 }
