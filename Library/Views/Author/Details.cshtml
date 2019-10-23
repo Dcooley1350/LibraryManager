@@ -7,8 +7,9 @@
 
 <div class="card">
     <div class="card-body">
-        <h1 class="card-title text-center">@Model.Name</h1>
+        <h1 class="card-title text-center">@Model.AuthorName</h1>
         @Html.ActionLink("Update This Author","Update","Author", new {id = Model.AuthorId}, new { @class = "button btn btn-info"})
+        @Html.ActionLink("Add a book","Create","Book", new {id = Model.AuthorId}, new { @class = "button btn btn-success"})
         @Html.ActionLink("Delete This Author","Delete","Author", new {id = Model.AuthorId}, new { @class = "button btn btn-danger"})
     </div>
         
@@ -23,9 +24,9 @@
         else
         {
         <ul>
-            @foreach(Client model in @ViewBag.Books)
+            @foreach(AuthorBook model in @ViewBag.Books)
             {
-                <h2><li>@Html.ActionLink($"{model.Title}, Id: {model.BookId}", "Details","Book", new { id = model.BookId}, new { @class ="index-list"})</li></h2>
+                <h2><li>@Html.ActionLink($"{model.Book.Title}, Id: {model.Book.BookId}", "Details","Book", new { id = model.Book.BookId}, new { @class ="index-list"})</li></h2>
             }
         </ul>
         }

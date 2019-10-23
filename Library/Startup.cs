@@ -43,6 +43,14 @@ namespace Library
         });
     }
 
+    IdentityRole x  = new IdentityRole();
+
+    user.AddRole(role)
+role.AddRole(user)
+    new IdentityUser()
+
+  
+
     public void Configure(IApplicationBuilder app)
     {
       app.UseStaticFiles();

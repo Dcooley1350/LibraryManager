@@ -29,23 +29,36 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Library Home</a>
+
                         </li>
                         <li class="nav-item">
-                            <a href="/Books" class="nav-link text-dark"  >Books</a>
+                            <a href="/Book" class="nav-link text-dark"  >Books</a>
                         </li>
                         </li>
                         <li class="nav-item">
-                            <a href="/Authors" class="nav-link text-dark" >Authors</a>
+                            <a href="/Author" class="nav-link text-dark" >Authors</a>
                         </li>
                         <li class="nav-item">
-                            <a href="/Patrons" class="nav-link text-dark" >Patron</a>
+                            <a href="/Patron" class="nav-link text-dark" >Patron</a>
                         </li>
                         <li class="nav-item">
-                            <a href="/Librarians" class="nav-link text-dark" >Librarians</a>
+                            <a href="/Librarian" class="nav-link text-dark" >Librarians</a>
                         </li>
                     </ul>
                 </div>
+                @if(User.Identity.IsAuthenticated)
+                {
+                    <p>Logged in as <em>@User.Identity.Name</em></p>
+                    @using (Html.BeginForm("LogOff", "Account"))
+                    {
+                    <input type="submit" class="btn btn-default" value="Log out" />
+                    }
+                }
+                else
+                {
+                    <a href="/Account/Login" class="button btn btn-success">Log In</a>
+                }
+
             </div>
         </nav>
     </header>

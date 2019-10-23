@@ -19,7 +19,7 @@
             @Html.LabelFor(model => model.Description)
             @Html.TextBoxFor(model => model.Description, new {@class = "form-control"})
             <br>
-            @Html.LabelFor(model => model.Author)
+            @Html.Label("Author")
             @Html.DropDownList("AuthorId")
             <br>
             <input type="submit" value="Save" class="btn button btn-info";>

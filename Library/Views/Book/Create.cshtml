@@ -4,7 +4,7 @@
 @using Library.Models;
 @model Library.Models.Book;
 
-@if(@ViewBag.CheckList.Count == 0)
+@if(@ViewBag.Authors.Count == 0)
 {
 <div class="card">
     <div class="card-body">
@@ -33,7 +33,7 @@ else
             @Html.Label("Author")
             @Html.DropDownList("AuthorId")
             <br>
-            <input type="submit" value="Add Client" class="btn button btn-success";>
+            <input type="submit" value="Add Book" class="btn button btn-success";>
         }
     </div>
 </div>

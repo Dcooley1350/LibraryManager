@@ -1,12 +1,13 @@
 @{
     Layout = "_Layout";
 }
+@using System.Collections.Generic;
 @using Library.Models;
-@*@model List<Library.Models.Books>;*@
+@model List<Library.Models.Book>;
 
 <div class="card">
     <div class="card-body">
-        <h1 class="card-title text-center">Clients</h1>
+        <h1 class="card-title text-center">Books</h1>
     </div>
         <a href="/Book/Create" class = "button btn btn-success">Add Book</a>
 </div>
@@ -25,7 +26,7 @@
             <ul>
             @foreach(Book model in Model)
             {
-                <h2><li>@Html.ActionLink($"{model.Title}", "Details","Book", new { id = model.BookId})</li></h2>
+                <h2><li>@Html.ActionLink($"{model.Title}", "Details","Book", new { id = model.BookId}) by @Html.ActionLink($"{model.Title}", "Details","Book", new { id = model.BookId})</li></h2>
             }
             </ul>
         }

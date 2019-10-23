@@ -1,0 +1,16 @@
+@{
+    Layout = "_Layout";
+}
+@using Library.Models;
+@model Library.Models.Author;
+
+<div class="card">
+    <div class="card-body">
+        <h1 class="card-title text-danger text-center">Are you sure you would like to delete <u>@Model.AuthorName</u>?</h1>
+        @using (Html.BeginForm())
+        {
+            <input type="submit" value="Delete Book" class="btn button btn-danger text-center"/>
+        }
+        
+    </div>     
+</div>

@@ -7,8 +7,14 @@
 
 <div class="card">
     <div class="card-body">
-        <h1 class="card-title text-center">@Model.Title, ID: @Model.BookId</h1>
-        <h3>Number of copies in inventory: @Model.Copies.Count;</h3>
+        <h1 class="card-title text-center"><u>@Model.Title</u></h1>
+        @foreach (AuthorBook authorbook in Model.Authors)
+        {
+            <h1>By: @Html.ActionLink($"{authorbook.Author.AuthorName}", "Details", "Author", new {id = authorbook.Author.AuthorId})</h1>
+        }
+        <h3>Number of copies in inventory: @Model.Copies.Count</h3>
+        <h3>Book Id: @Model.BookId</h3>
+        <h3>Synopsis:</h3>
         <h4>@Model.Description</h4>
         @Html.ActionLink("Update This Book","Update","Book", new {id = Model.BookId}, new { @class = "button btn btn-info"})
         @Html.ActionLink("Add copies of this book", "Create", "Copies", new {id = Model.BookId}, new { @class = "button btn btn-success"})

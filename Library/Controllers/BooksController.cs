@@ -11,7 +11,7 @@ using System.Security.Claims;
 
 namespace Library.Controllers
 {
-  [Authorize]
+[Authorize]
   public class BookController : Controller
   {
     private readonly LibraryContext _db;
@@ -26,13 +26,14 @@ namespace Library.Controllers
     {
         var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
         var currentUser = await _userManager.FindByIdAsync(userId);
-        var userBooks = _db.Books.Where(entry => entry.User.Id == currentUser.Id);
+        var userBooks = _db.Books.Where(entry => entry.User.Id == currentUser.Id).ToList();
         return View(userBooks);
     }
 
     public ActionResult Create()
     {
-      ViewBag.CategoryId = new SelectList(_db.Authors, "AuthorId", "AuthorName");
+      ViewBag.AuthorId = new SelectList(_db.Authors, "AuthorId", "AuthorName");
+      ViewBag.Authors = _db.Authors.ToList();
       return View();
     }
 
