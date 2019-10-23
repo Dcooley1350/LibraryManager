@@ -26,7 +26,9 @@ namespace Library.Controllers
     {
         var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
         var currentUser = await _userManager.FindByIdAsync(userId);
-        var userBooks = _db.Books.Where(entry => entry.User.Id == currentUser.Id).ToList();
+        List<Book> userBooks = _db.Books.Include(book => book.Authors).ThenInclude(join => join.Author).ToList();
+        System.Console.WriteLine(userBooks);
+        // Where(entry => entry.User.Id == currentUser.Id).ToList();
         return View(userBooks);
     }
 

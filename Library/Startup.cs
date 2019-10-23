@@ -43,11 +43,11 @@ namespace Library
         });
     }
 
-    IdentityRole x  = new IdentityRole();
+//     IdentityRole x  = new IdentityRole();
 
-    user.AddRole(role)
-role.AddRole(user)
-    new IdentityUser()
+//     user.AddRole(role)
+// role.AddRole(user)
+//     new IdentityUser()
 
   
 

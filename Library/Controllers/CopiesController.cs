@@ -24,7 +24,11 @@ namespace Library.Controllers
         }
         public ActionResult Create(int id)
         {
-            new Copy = 
+            var foundBook = _db.Books.FirstOrDefault(books => books.BookId == id);
+            Copy newCopy = new Copy(id,foundBook);
+            _db.Copies.Add(newCopy);
+            _db.SaveChanges();
+            return RedirectToAction("Details", "Books");
         }
     }
 }

@@ -8,10 +8,11 @@ namespace Library.Models
         {
             CheckedOut = false;
         }
-        public Copy(int bookId)
+        public Copy(int bookId, Book book)
         {
             CheckedOut= false;
             BookId = bookId;
+            Book = book;
         }
         public int CopyId { get; set; }
         public int BookId { get; set; }
